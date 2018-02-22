@@ -66,23 +66,22 @@ exercise.binary = function(TimeHere, col){
     sec_col2 = Sec - Math.floor (Sec/10)*10;
 
     var RomanRaw = [hour_col1, hour_col2, min_col1, min_col2, sec_col1, sec_col2]; 
-
     // console.log(RomanRaw)
 
     var Switch = {
-        block8 : 'off',
         block4 : 'off',
+        block3 : 'off',
         block2 : 'off',
         block1 : 'off',
     }
 
-    // block 8 is "8" block
-    // block 4 is "4" block
+    // block 4 is "8" block
+    // block 3 is "4" block
     // block 2 is "2" block
     // block 1 is "1" block
 
     if (RomanRaw[col-1] >= 8){
-        Switch.block8 = 'on';
+        Switch.block4 = 'on';
         RomanRaw[col-1] -= 8;
     }
 
@@ -90,7 +89,7 @@ exercise.binary = function(TimeHere, col){
     // console.log(Switch)
     
     if (RomanRaw[col-1] >= 4){
-        Switch.block4 = 'on';
+        Switch.block3 = 'on';
         RomanRaw[col-1] -= 4;
     }
 

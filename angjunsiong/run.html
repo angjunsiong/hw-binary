@@ -22,7 +22,6 @@ var setRoman = function(time) {
 	// you must implement exercise.roman()
 	
 	var RomanData = exercise.roman(time)
-	console.log(RomanData.min_col2)
 
 	//Now we have RomanData, we translate it into an actual display
 	document.getElementById('hour_col1').innerHTML = RomanData.hour_col1
@@ -40,161 +39,37 @@ var setBinary = function(time){
 
 	// Each value in the clock is routed through the exercise.binary function
 	// Column1 is hour colum 1, Columnn2 is hour column 2, and so on
-	var Column1 = exercise.binary(time, 1)
-	var Column2 = exercise.binary(time, 2)
-	var Column3 = exercise.binary(time, 3)
-	var Column4 = exercise.binary(time, 4)
-	var Column5 = exercise.binary(time, 5)
-	var Column6 = exercise.binary(time, 6)
 	
-	// console.log(Column1)
+	BinaryData = new Array();
 
-	// Column1
-	if (Column1.block1 === 'on'){
-		document.getElementById('hour_col1_block1').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col1_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column1.block2 === 'on'){
-		document.getElementById('hour_col1_block2').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col1_block2').style.backgroundColor = 'silver'	
+	for (i = 1; i <= 6; i++){
+		BinaryData.push(exercise.binary(time, i));
 	}
 
-	// Column2
-	if (Column2.block1 === 'on'){
-		document.getElementById('hour_col2_block1').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col2_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column2.block2 === 'on'){
-		document.getElementById('hour_col2_block2').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col2_block2').style.backgroundColor = 'silver'	
-	}
+	for (i = 0; i <= 5; i++){
+		for (j = 0; j <= 3; j++){
+			var time_id = "BinaryData[" + (i) + "].block" + (j+1);
+			if(i === 0 || i === 1){
+				var block_id = "hour_col" + (i+1) + "_block" + (j+1);
+			}
+			if(i === 2 || i === 3){
+				var block_id = "min_col" + (i+1) + "_block" + (j+1);
+			}
+			if(i === 4 || i === 5){
+				var block_id = "sec_col" + (i+1) + "_block" + (j+1);
+			}
 
-	if (Column2.block4 === 'on'){
-		document.getElementById('hour_col2_block4').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col2_block4').style.backgroundColor = 'silver'	
-	}
+// we need eval here because "time_id" will only return BinaryData[i].blockj; eval will get you the actual value
+			if (eval(time_id) === 'on'){
+				document.getElementById(block_id).style.backgroundColor = 'red';
+			}
+			else{
+				document.getElementById(block_id).style.backgroundColor = 'silver';	
+			}
 
-	if (Column2.block8 === 'on'){
-		document.getElementById('hour_col2_block8').style.backgroundColor = 'red'
-	}
-	else{
-		document.getElementById('hour_col2_block8').style.backgroundColor = 'silver'	
-	}
-
-	// Column3
-	if (Column3.block1 === 'on'){
-		document.getElementById('min_col1_block1').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col1_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column3.block2 === 'on'){
-		document.getElementById('min_col1_block2').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col1_block2').style.backgroundColor = 'silver'	
-	}
-
-	if (Column3.block4 === 'on'){
-		document.getElementById('min_col1_block4').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col1_block4').style.backgroundColor = 'silver'	
-	}
-
-	// Column4
-	if (Column4.block1 === 'on'){
-		document.getElementById('min_col2_block1').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col2_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column4.block2 === 'on'){
-		document.getElementById('min_col2_block2').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col2_block2').style.backgroundColor = 'silver'	
-	}
-
-	if (Column4.block4 === 'on'){
-		document.getElementById('min_col2_block4').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col2_block4').style.backgroundColor = 'silver'	
-	}
-
-	if (Column4.block8 === 'on'){
-		document.getElementById('min_col2_block8').style.backgroundColor = 'blue'
-	}
-	else{
-		document.getElementById('min_col2_block8').style.backgroundColor = 'silver'	
-	}
-
-	// Column5
-	if (Column5.block1 === 'on'){
-		document.getElementById('sec_col1_block1').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col1_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column5.block2 === 'on'){
-		document.getElementById('sec_col1_block2').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col1_block2').style.backgroundColor = 'silver'	
-	}
-
-	if (Column5.block4 === 'on'){
-		document.getElementById('sec_col1_block4').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col1_block4').style.backgroundColor = 'silver'	
-	}
-
-	// Column6
-	if (Column6.block1 === 'on'){
-		document.getElementById('sec_col2_block1').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col2_block1').style.backgroundColor = 'silver'	
-	}
-	
-	if (Column6.block2 === 'on'){
-		document.getElementById('sec_col2_block2').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col2_block2').style.backgroundColor = 'silver'	
-	}
-
-	if (Column6.block4 === 'on'){
-		document.getElementById('sec_col2_block4').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col2_block4').style.backgroundColor = 'silver'	
-	}
-
-	if (Column6.block8 === 'on'){
-		document.getElementById('sec_col2_block8').style.backgroundColor = 'yellow'
-	}
-	else{
-		document.getElementById('sec_col2_block8').style.backgroundColor = 'silver'	
-	}
-};
+			}
+		}
+}
 
 // start timer when page is loaded
 // your code here
@@ -216,34 +91,34 @@ window.onload = timer;
 
 <!-- For the hour digits -->
 
-<div id = "hour_col1_block8" = style="left:10px; top:10px; visibility : hidden"></div>
-<div id = "hour_col1_block4" = style="left:10px; top:120px;visibility : hidden"></div>
+<div id = "hour_col1_block4" = style="left:10px; top:10px; visibility : hidden"></div>
+<div id = "hour_col1_block3" = style="left:10px; top:120px;visibility : hidden"></div>
 <div id = "hour_col1_block2" = style="left:10px; top:230px;"></div>
 <div id = "hour_col1_block1" = style="left:10px; top:340px;"></div>
-<div id = "hour_col2_block8" = style="left:120px; top:10px;"></div>
-<div id = "hour_col2_block4" = style="left:120px; top:120px;"></div>
+<div id = "hour_col2_block4" = style="left:120px; top:10px;"></div>
+<div id = "hour_col2_block3" = style="left:120px; top:120px;"></div>
 <div id = "hour_col2_block2" = style="left:120px; top:230px;"></div>
 <div id = "hour_col2_block1" = style="left:120px; top:340px;"></div>
 
 <!-- For the minutes digits -->
-<div id = "min_col1_block8" = style="left:230px; top:10px;visibility : hidden"></div>
-<div id = "min_col1_block4" = style="left:230px; top:120px;"></div>
-<div id = "min_col1_block2" = style="left:230px; top:230px;"></div>
-<div id = "min_col1_block1" = style="left:230px; top:340px;"></div>
-<div id = "min_col2_block8" = style="left:340px; top:10px;"></div>
-<div id = "min_col2_block4" = style="left:340px; top:120px;"></div>
-<div id = "min_col2_block2" = style="left:340px; top:230px;"></div>
-<div id = "min_col2_block1" = style="left:340px; top:340px;"></div>
+<div id = "min_col3_block4" = style="left:230px; top:10px;visibility : hidden"></div>
+<div id = "min_col3_block3" = style="left:230px; top:120px;"></div>
+<div id = "min_col3_block2" = style="left:230px; top:230px;"></div>
+<div id = "min_col3_block1" = style="left:230px; top:340px;"></div>
+<div id = "min_col4_block4" = style="left:340px; top:10px;"></div>
+<div id = "min_col4_block3" = style="left:340px; top:120px;"></div>
+<div id = "min_col4_block2" = style="left:340px; top:230px;"></div>
+<div id = "min_col4_block1" = style="left:340px; top:340px;"></div>
 
 <!-- For the seconds digits -->
-<div id = "sec_col1_block8" = style="left:450px; top:10px;visibility : hidden"></div>
-<div id = "sec_col1_block4" = style="left:450px; top:120px;"></div>
-<div id = "sec_col1_block2" = style="left:450px; top:230px;"></div>
-<div id = "sec_col1_block1" = style="left:450px; top:340px;"></div>
-<div id = "sec_col2_block8" = style="left:560px; top:10px;"></div>
-<div id = "sec_col2_block4" = style="left:560px; top:120px;"></div>
-<div id = "sec_col2_block2" = style="left:560px; top:230px;"></div>
-<div id = "sec_col2_block1" = style="left:560px; top:340px;"></div>
+<div id = "sec_col5_block4" = style="left:450px; top:10px;visibility : hidden"></div>
+<div id = "sec_col5_block3" = style="left:450px; top:120px;"></div>
+<div id = "sec_col5_block2" = style="left:450px; top:230px;"></div>
+<div id = "sec_col5_block1" = style="left:450px; top:340px;"></div>
+<div id = "sec_col6_block4" = style="left:560px; top:10px;"></div>
+<div id = "sec_col6_block3" = style="left:560px; top:120px;"></div>
+<div id = "sec_col6_block2" = style="left:560px; top:230px;"></div>
+<div id = "sec_col6_block1" = style="left:560px; top:340px;"></div>
  
 <!-- For the Roman clock -->
 <p id = "hour_col1" = style="left:10px; top:450px;"></p>
